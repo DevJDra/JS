@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="alert-box" id="alert">
+        <p id="title">Alert 박스</p>
+        <button id="close">닫기</button>
+    </div>
+    <button onclick = "Alert('block');">버튼</button>
+
+    <button onclick = "alertBox('아이디 입력하세요');">버튼 1</button>
+    <button onclick = "alertBox('비밀번호 입력하세요');">버튼 2</button>
+    
+    <script>
+        
+        document.getElementById('close').addEventListener('click', function(){
+            document.getElementById('alert').style.display = 'none';
+        });
+
+        function openAlert() {
+            document.getElementById('alert').style.display = 'block';
+        }
+
+        function closeAlert() {
+            document.getElementById('alert').style.display = 'none';
+        }
+
+        function Alert(hole) {
+            document.getElementById('alert').style.display = hole;
+        }
+
+        function alertBox(hole) {
+            document.getElementById('alert').style.display = 'block';
+            document.getElementById('title').innerHTML = hole;
+        }
+
+    </script>
+</body>
+</html>
