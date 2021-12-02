@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function game(num){
+            if(num % 3 == 0) {
+                console.log('박수');
+            }
+            else{
+                console.log('통과');
+            }
+        }
+
+        function 삼육구게임(숫자){
+            if (숫자 % 9 == 0) {
+                console.log("박수x2");
+            } else if (숫자 % 3 == 0){
+                console.log('박수');
+            } else {
+                console.log('통과');
+            }
+        }
+
+        function Realgame(num){
+            var num = String(num);
+            var number = num.substr(num.length-1, 1);
+            if(number % 3 == 0) {
+                console.log('박수');
+            }
+            else{
+                console.log('통과');
+            }
+        }
+
+        // function game2(num){
+        //     if(num %3 == 0){
+        //         if(num % 9 == 0){
+        //             console.log('박수박수');
+        //         }
+        //         else{
+        //             console.log('박수');
+        //         }
+        //     }
+        //     else{
+        //         console.log('박수');
+        //     }
+        // }
+    </script>
+</body>
+</html>
