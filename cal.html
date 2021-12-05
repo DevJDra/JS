@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var savingMoney = 60000;
+        var futureSavingMoney = 0;
+        var year = 2;
+
+        var rate = function(savingMoney){
+
+            if(savingMoney < 50000){
+                savingMoney += savingMoney * 0.15
+            }
+            else{
+                savingMoney += savingMoney * 0.2
+            }
+            return savingMoney;
+        };
+
+        for(var i=0; i< year; i++ ){
+           savingMoney = rate(savingMoney);
+        }
+        futureSavingMoney = savingMoney;  
+        console.log(futureSavingMoney);
+    </script>
+</body>
+</html>

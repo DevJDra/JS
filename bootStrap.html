@@ -14,8 +14,24 @@
 
     <title>Hello, world!</title>
   </head>
+  <body>
+    <!-- <h3 id="hi">안녕</h3>
 
-    <div class="black-background">
+    <script>
+
+        $('#hi').click(function(){
+                            //{css 카멜기법으로 기입 }, 시간 
+            $('#hi').animate({ marginLeft : '100px', marginTop : '100px' }, 5000);
+        });
+    </script> -->
+
+    <div class="left-menu">
+        <p>Menu Title</p>
+    </div>
+
+      
+  
+    <div class="black-background slide-down">
         <div class="white-background"> 
             <p>로그인 하세요.</p>
 
@@ -29,9 +45,8 @@
                   <p id="password-alert">패스워드가 빈칸입니다.</p>
                 </div>
                 <button type="submit" id="submit" class="btn btn-primary">전송</button>
+                <button class="btn btn-danger" id="close">닫기</button>
             </form>
-
-            <button class="btn btn-danger" id="close">닫기</button>
         </div>
     </div>
 
@@ -52,17 +67,99 @@
         <hr class="my-4">
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
         <a class="btn btn-primary btn-lg" href="#" role="button" id="logIn">Log In</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button" id="show-menu">Show Menu</a>
     </div>
 
-    <input type="text" id="test-input">
+    <h4 class="my-4 text-center">Showcase</h4>
+
+    <div style="overflow: hidden; position: relative">
+        <div class="slide-container">
+            <div class="slide-box">
+                <img src="img/shirt1.jpg">
+            </div>
+            <div class="slide-box">
+                <img src="img/shirt2.jpg">
+            </div>
+            <div class="slide-box">
+                <img src="img/shirt3.jpg">
+            </div>
+        </div>
+        <button class="slide-next">Next</button>
+    </div>
+    <button class="silde-prev">prev</button>
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="slide-next">next</button>
+    <div class="my-5"></div>
 
     <script>
-        document.getElementById('logIn').addEventListener('click',function(){
-            document.getElementsByClassName('black-background')[0].style.display = 'block';
-            document.getElementsByClassName('white-background')[0].style.display = 'block';
-            $('.black-background').show();
-            $('.black-background').slideDown();
+        $('.slide-1').click(function(){
+            $('.slide-container').css('transform', 'translateX(0vw)');
         });
+
+        $('.slide-2').click(function(){
+            $('.slide-container').css('transform', 'translateX(-100vw)');
+        });
+
+        $('.slide-3').click(function(){
+            $('.slide-container').css('transform', 'translateX(-200vw)');
+        });
+
+        // var nextCnt = 0;
+        // $('.slide-next').click(function(){
+        //     nextCnt -= 100;
+        //     $('.slide-container').css('transform', 'translateX('+nextCnt+'vw)');
+        // });
+        
+        var 지금보이는사진 = 1;
+        $('.slide-next').click(function(){
+            // if( 지금보이는사진 == 1){
+            //     $('.slide-container').css('transform', 'translateX(-100vw)');
+            //     지금보이는사진 = 지금보이는사진 + 1;
+            // } else if (지금보이는사진 == 2){
+            //     $('.slide-container').css('transform', 'translateX(-200vw)');
+            //     지금보이는사진 = 지금보이는사진 + 1;
+            // }
+            if(지금보이는사진 == 3){
+                지금보이는사진 = 지금보이는사진;
+            }else{
+            $('.slide-container').css('transform', 'translateX(-'+지금보이는사진+'00vw)');
+            지금보이는사진 = 지금보이는사진 + 1;
+            }
+        });
+
+        $('.silde-prev').on('click',function(){
+            지금보이는사진 -= 1;
+            $('.slide-container').css('transform', 'translateX(-'+지금보이는사진+'00vw)');
+            
+        });
+    </script>
+
+    <script>
+        $('#show-menu').on('click',function(){
+            $('.left-menu').animate({marginLeft: '0px'}, 1000);
+        });
+    </script>
+
+    <!-- <input type="text" id="test-input"> -->
+
+    <script>
+
+        $('#logIn').click(function(){
+            //$('.black-background').css('display', 'block').animate({ marginTop:'0px' }, 1000);
+            //$('.white-background').css('display', 'block').animate({ marginTop:'0px' }, 1000);
+            //$('.black-background').css('transform', 'translateY(0px)');
+            $('.black-background').css('display','block');
+            $('.black-background').addClass('slide-down');
+        });
+
+        // document.getElementById('logIn').addEventListener('click',function(){
+        //     document.getElementsByClassName('black-background')[0].style.display = 'block';
+        //     document.getElementsByClassName('white-background')[0].style.display = 'block';
+        //     $('.black-background').show();
+        //     $('.black-background').slideDown();
+        // });
         
         $('#close').on('click', function(){
             $('.white-background').css('display', 'none');
@@ -83,32 +180,75 @@
             console.log('반가워');
         }
 
-        $('#logIn').on('click',function(){
-            let t = $('#test-input').val();
-            if(t == '안녕'){
-                $('.black-background').show();
-            } else if (t != '안녕'){
-                alert("안녕일때만 열려 !");
-            }
-        });
+        // $('#logIn').on('click',function(){
+        //     let t = $('#test-input').val();
+        //     if(t == '안녕'){
+        //         $('.black-background').show();
+        //     } else if (t != '안녕'){
+        //         alert("안녕일때만 열려 !");
+        //     }
+        // });
 
         //폼이 전송될 때
         //만약에 이메일 input에 입력된 값이 빈칸인 경우, 폼의 전송을 막음, 안내문 띄움
         //만약에 패스워드 input에 입력된 값이 빈칸인 경우, 폼의 전송을 막음, 안내문 띄움
 
+        var 이메일안내창 = $('#email-alert');
+
         $('form').on('submit',function(e){
-            if($('#email').val() == ''){
+
+            var 입력한이메일 = $('#email').val();
+            var email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+            var 입력한패스워드 = $('#password').val();
+            
+
+            if(!(email.test(입력한이메일))){
                 e.preventDefault();
-                $('#email-alert').show();
-            } else if($('#password').val() == ''){
+                $('#email-alert').text('이메일이 형식에 맞지 않습니다.');
+                이메일안내창.show();
+            }else if(입력한이메일 == ''){
                 e.preventDefault();
+                이메일안내창.show();
+            }
+
+            if( /[0-9]+/.test(입력한패스워드) == false){
+                e.preventDefault();
+                $('#password-alert').text('비밀번호 형식에 맞지 않습니다.');
                 $('#password-alert').show();
             }
-        });
 
-        $('#email').on('change', function{
-            $('#email.alert').show();
+            // if($('#email').val() == ''){
+            //     e.preventDefault();
+            //     이메일안내창.show();
+            // } else if($('#password').val() == ''){
+            //     e.preventDefault();
+            //     $('#password-alert').show();
+            // }
+            //나이;
         });
+        
+        // \S =>모든문자 1개(특수문자 포함)
+        // /\S@/.test('t@');
+        // + => 뒤에도 계속 찾아주세요
+        // \ => 특수 문법기호들 escape처리
+        // /\S+@\S+\.\S+/.test('asdb@asd.com');
+
+        //범위가 function
+        //var 나이 = 20;
+
+        //범위가 {}
+        //재선언이 불가능한 변수를 만들때
+       // let 나이 = 20;
+
+        //범위가 {}
+        //재선언이 불가능한 변수를 만들때
+        //재할당이 불가능한 변수를 만들때
+        const 나이 = 20;
+        console.log(나이);
+
+        $('#email').on('change', function(){
+            $('#email.alert').show();
+        });        
 
     </script>
     <!-- Optional JavaScript; choose one of the two! -->

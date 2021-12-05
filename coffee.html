@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var firstCoffee = 360;
+        var totalCoffee = 0;
+        var refillCnt = 2
+        var refillMount = 2/3;
+        
+        var refill = function(coffee){
+            totalCoffee = coffee;
+
+            for(var i=1; i<=refillCnt; i++){
+
+                if(i == 1){
+                    totalCoffee += coffee*refillMount;
+                }
+                else if (i === 2){
+                    totalCoffee += coffee*refillMount*refillMount;
+                }
+            }
+
+            return totalCoffee;
+        }
+
+        refill(firstCoffee);
+        console.log(totalCoffee);
+    </script>
+</body>
+</html>
