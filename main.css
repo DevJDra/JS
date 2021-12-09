@@ -149,3 +149,7 @@ ul.list {
   .show {
 	display: block;
   }
+
+  .size-select {
+      display: block;
+  }
