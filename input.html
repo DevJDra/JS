@@ -65,23 +65,42 @@
         //     };
         //   });
 
+        // $('#option1').on('change', function(){
+
+        //     if ( $('#option1').val() == '셔츠') {
+                
+        //         $('#option2').html("");
+        //         var 템플릿 = '<option>95</option>'
+        //                    + '<option>100</option>'
+        //                    + '<option>105</option>';
+        //         $('#option2').append(템플릿);
+        //     }else if( $('#option1').val() == '바지'){
+                
+        //         $('#option2').html("");
+        //         var 템플릿 = `<option>28</option>
+        //                       <option>30</option>
+        //                       <option>30</option>`;
+        //         $('#option2').append(템플릿);
+        //     }
+        // });
+
+        var 사이즈 = [26,28,30,32,34,36];
+
         $('#option1').on('change', function(){
 
-            if ( $('#option1').val() == '셔츠') {
-                
-                $('#option2').html("");
-                var 템플릿 = '<option>95</option>'
-                           + '<option>100</option>'
-                           + '<option>105</option>';
-                $('#option2').append(템플릿);
-            }else if( $('#option1').val() == '바지'){
-                
-                $('#option2').html("");
-                var 템플릿 = `<option>28</option>
-                              <option>30</option>
-                              <option>30</option>`
-                $('#option2').append(템플릿);
-            }
+          // if($('#option1').val() == '바지'){
+
+          //   for (var i = 0; i < 6; i++){
+          //     var 템플릿 = `<option>${사이즈[i]}</option>`;
+          //     $('#option2').append(템플릿);
+          //   }
+          // }
+          if($('#option').val() == '바지'){
+            사이즈.forEach(function(i){
+              var 템플릿 = `<option>${i}</option>`;
+              $('#option2').append(템플릿);
+            });
+          }
         });
       </script>
 

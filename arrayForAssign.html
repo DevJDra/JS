@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var attendance = ['흥민', '영희', '철수', '재석'];
+
+        function searchName(name){
+            attendance.forEach(function(i){
+                if(name == i){
+                    console.log('있어요');
+                    return
+                }
+            });
+
+        }
+
+        searchName('철수');
+    </script>
+    <script>
+
+        // for(var x=1; x<=9; x++){
+        //     for(var y=1; y<=9; y++){
+        //         console.log(x+"*"+y+"="+(x*y));
+        //     }
+        // }
+        
+    </script>
+    <script>
+        var arr = [10, 20, 30, 40, 50];
+        var avg = 35;
+        var sum = 0;
+        function calculator(arr, avg){
+
+            arr.forEach(function(i){
+                sum += i;
+            });
+            var result = ((avg*arr.length) - sum)+avg;
+            console.log(result);
+        }
+
+        calculator(arr,avg);
+    </script>
+    
+</body>
+</html>
