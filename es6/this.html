@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="button">버튼</button>
+    <script>
+
+        // 1. 그냥 쓰거나 일반 함수안에서 쓰면 {window}  window=> 기본 함수들 수납공간
+        //strictmod + 일반함수 내에서 쓰면 undefined
+        'use strict';
+        console.log(this) //{window}
+        
+        function 함수(){
+            console.log(this); //undefined
+        }
+
+        함수()
+
+        //2. 오브젝트 내 함수(메소드) 안에서 쓰면.. 그 함수를 가지고 있는 오브젝트를 뜻함
+        var obj = {
+            data : {
+                func : function(){
+                    console.log(this)
+                },
+                func2 : () => { //Aroow Function 특징 : this값을 함수밖에 있던거 그대로 씀
+                    console.log(this)
+                }
+            },
+            func : function(){
+                console.log(this); // this = 나를 포함하고 있는 오브젝트
+            }
+        }
+        
+        obj.func();
+        obj.data.func();
+        obj.data.func2();
+
+        //함수나 변수를 전역공간에서 만들면 -> {window}에 보관합니다.(global object; 전역변수 보관소)
+        함수();
+        window.함수();
+        //this 를 출력하면 window가 나오는 이유 ???
+        //함수나 변수는 window라는 global object안에서 만들기 때문에
+        //오브젝트 내 함수(메소드) 안에서 쓰면 그 함수를 가지고 있는 오브젝트 -> window를 나타낸다
+        // window :{
+        //     함수(){
+        //         console.log(this)
+        //     }
+        // } 
+        
+        var test ={}
+        //3. constructor안에서쓰면 새로 생성되는 오브젝트를 뜻함
+        function machine(){ //오브젝트 생성기계(constructor)
+            this.name = 'kim' //새로생성되는 오브젝트(instance)
+        }
+
+        var obj = new machine();
+
+        //4.이벤트 리스너 안에서는 e.currentTarget
+        document.getElementById('button').addEventListener('click',function(e){
+            console.log(this); 
+            console.log(e.currentTarget); //지금 이벤트 동작하는곳
+
+            var arr = [1,2,3];
+            arr.forEach(function(a){ //콜백함수 => 함수 안에 들어가는 함수를 콜백함수
+                //Case study 1. 콜백함수(일반함수)이기 때문에 window출력
+                console.log(this)
+            })
+        })
+
+        //Case study 2. 오브젝트 내에서 콜백함수를 쓴다면 this는 ?
+        var object = {
+            names : ['김', '이', ' 박'],
+            func : function() {
+                console.log(this); // 위 함수를 소유한 object
+                object.names.forEach(function(){
+                    console.log(this)//window
+                })
+
+                //Case Study 3. arrow function안에서의 this?
+                object.names.forEach(() => {
+                    console.log(this)//내부의 this값을 변화시키지 않음(외부 this값 그대로 재사용)
+                })
+            }
+        }
+        object.func();
+
+        
+    </script>
+</body>
+</html>

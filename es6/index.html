@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="hello">안녕</p>
+    <button id="button">버튼</button>
+
+    
+<script>
+    //html 누르면 뭐 실행하고 싶을때 => 이벤트 리스너
+    document.getElementById('button').addEventListener('click', function(){
+        document.getElementById('hello').innerHTML = '바보'
+        작명('바보') //함수 실행
+    })
+
+    //잠깐 자료 저장해두고 싶으면 => 변수 
+    var name = 'kim';
+    var age = 20;
+
+    //코드 긴거 짧게 축약하려면 => 함수 
+    //함수 다양하게 쓰려면 => 파라미터로 업그레이드
+    function 작명(파라미터) {
+        document.getElementById('hello').innerHTML = 파라미터
+    }
+
+    //자료 한번에 여러개 저장하려면 => array, object
+    var name2 = ['kim', 'park'];
+    name2[0];
+    var name3 = {name : 'kim', age : 'park'};
+    name3.age;
+    
+    //코드를 조건부로 실행하고 싶을 때 => if/else
+
+    if(1 == 1 && 2 == 2 || 3 != 3){
+        console.log('안녕');
+    }else if(4 == 4){
+        console.log('안녕2');
+    }else{
+
+    }
+
+    //반복되는 코드를 줄이고 싶을때 => for 반복문
+
+    for (var i = 0; i < 3; i++){
+        console.log('안녕');
+    }
+
+    [1,2,3,4].forEach(function(){
+        
+    });
+</script>
+</body>
+</html>
