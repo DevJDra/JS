@@ -13,65 +13,65 @@
 
         // 1. 그냥 쓰거나 일반 함수안에서 쓰면 {window}  window=> 기본 함수들 수납공간
         //strictmod + 일반함수 내에서 쓰면 undefined
-        'use strict';
-        console.log(this) //{window}
+        // 'use strict';
+        // console.log(this) //{window}
         
-        function 함수(){
-            console.log(this); //undefined
-        }
+        // function 함수(){
+        //     console.log(this); //undefined
+        // }
 
-        함수()
+        // 함수()
 
-        //2. 오브젝트 내 함수(메소드) 안에서 쓰면.. 그 함수를 가지고 있는 오브젝트를 뜻함
-        var obj = {
-            data : {
-                func : function(){
-                    console.log(this)
-                },
-                func2 : () => { //Aroow Function 특징 : this값을 함수밖에 있던거 그대로 씀
-                    console.log(this)
-                }
-            },
-            func : function(){
-                console.log(this); // this = 나를 포함하고 있는 오브젝트
-            }
-        }
-        
-        obj.func();
-        obj.data.func();
-        obj.data.func2();
-
-        //함수나 변수를 전역공간에서 만들면 -> {window}에 보관합니다.(global object; 전역변수 보관소)
-        함수();
-        window.함수();
-        //this 를 출력하면 window가 나오는 이유 ???
-        //함수나 변수는 window라는 global object안에서 만들기 때문에
-        //오브젝트 내 함수(메소드) 안에서 쓰면 그 함수를 가지고 있는 오브젝트 -> window를 나타낸다
-        // window :{
-        //     함수(){
-        //         console.log(this)
+        // //2. 오브젝트 내 함수(메소드) 안에서 쓰면.. 그 함수를 가지고 있는 오브젝트를 뜻함
+        // var obj = {
+        //     data : {
+        //         func : function(){
+        //             console.log(this)
+        //         },
+        //         func2 : () => { //Aroow Function 특징 : this값을 함수밖에 있던거 그대로 씀
+        //             console.log(this)
+        //         }
+        //     },
+        //     func : function(){
+        //         console.log(this); // this = 나를 포함하고 있는 오브젝트
         //     }
-        // } 
+        // }
         
-        var test ={}
-        //3. constructor안에서쓰면 새로 생성되는 오브젝트를 뜻함
-        function machine(){ //오브젝트 생성기계(constructor)
-            this.name = 'kim' //새로생성되는 오브젝트(instance)
-        }
+        // obj.func();
+        // obj.data.func();
+        // obj.data.func2();
 
-        var obj = new machine();
+        // //함수나 변수를 전역공간에서 만들면 -> {window}에 보관합니다.(global object; 전역변수 보관소)
+        // 함수();
+        // window.함수();
+        // //this 를 출력하면 window가 나오는 이유 ???
+        // //함수나 변수는 window라는 global object안에서 만들기 때문에
+        // //오브젝트 내 함수(메소드) 안에서 쓰면 그 함수를 가지고 있는 오브젝트 -> window를 나타낸다
+        // // window :{
+        // //     함수(){
+        // //         console.log(this)
+        // //     }
+        // // } 
+        
+        // var test ={}
+        // //3. constructor안에서쓰면 새로 생성되는 오브젝트를 뜻함
+        // function machine(){ //오브젝트 생성기계(constructor)
+        //     this.name = 'kim' //새로생성되는 오브젝트(instance)
+        // }
 
-        //4.이벤트 리스너 안에서는 e.currentTarget
-        document.getElementById('button').addEventListener('click',function(e){
-            console.log(this); 
-            console.log(e.currentTarget); //지금 이벤트 동작하는곳
+        // var obj = new machine();
 
-            var arr = [1,2,3];
-            arr.forEach(function(a){ //콜백함수 => 함수 안에 들어가는 함수를 콜백함수
-                //Case study 1. 콜백함수(일반함수)이기 때문에 window출력
-                console.log(this)
-            })
-        })
+        // //4.이벤트 리스너 안에서는 e.currentTarget
+        // document.getElementById('button').addEventListener('click',function(e){
+        //     console.log(this); 
+        //     console.log(e.currentTarget); //지금 이벤트 동작하는곳
+
+        //     var arr = [1,2,3];
+        //     arr.forEach(function(a){ //콜백함수 => 함수 안에 들어가는 함수를 콜백함수
+        //         //Case study 1. 콜백함수(일반함수)이기 때문에 window출력
+        //         console.log(this)
+        //     })
+        // })
 
         //Case study 2. 오브젝트 내에서 콜백함수를 쓴다면 this는 ?
         var object = {
@@ -90,7 +90,52 @@
         }
         object.func();
 
+        //함수를 쓰는 이유
+        //1. 코드들을 기능으로 묶고싶을때
+        //2. 입출력 기계를 만들고 싶을때
+
+        // function 함수(){
+
+        // } 
         
+        // var 함수 = function(){
+
+        // }
+
+        //Arrow function 장점
+        //1. 입출력 기계 만들때 보기 쉬움
+        //2. 소괄호 생략가능
+        //3. 코드 한줄이면 중괄호도 생략가능
+        var 함수 = (a,b) => {
+            return a + b
+        }
+        var 함수 = a => a + 10;
+        함수(5);
+
+        //Arrow function예시
+        //1.forEach 콜백함수
+
+        [1,2,3,4].forEach(function(a){
+            console.log(a)
+        });
+
+        [1,2,3,4].forEach(a => console.log(a));
+        
+        //2. 바깥에 있던 this값을 내부에서 그대로 사용
+        document.getElementById('버튼').addEventListener('click', (e) => {
+            this;
+            e.currentTarget;
+            //일반 이벤트리스너에선 this==e.currentTarget
+            //arrow function 이벤트리스너에선 this == 바깥의 this값
+        });
+        
+        //3.Object안의 함수
+        var 오브젝트 = {
+            함수 : () => {
+                return this
+            }
+        }
+        오브젝트.함수();
     </script>
 </body>
 </html>
