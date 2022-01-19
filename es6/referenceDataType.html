@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //그냥 문자와 숫자는 Primitive data type
+        //변수에 값이 그대로 저장됨
+        var 변수 = 1234;
+
+        //Array, Object는 변수에 값이 저장이 안됩니다
+        //변수에 reference가 저장됩니다.
+        var 어레이 = [1,2,3];
+
+        var obj = { name : 'Kim'};
+
+        //Primitive data type 다루기 : 복사
+        var 이름1 = '김';
+        var 이름2 = 이름1;
+
+        //Reference data type 
+        var 이름1 = {name : '김'};
+        //주소값을 복사하게됨.
+        var 이름2 = 이름1;
+        var 이름3 = {name : '김'};
+        이름1.name = '박';
+
+        console.log(이름1 == 이름2); //false 각각 다른 주소값을 가르킴
+        // 오브젝트를 재할당해주는 함수
+        function 변경(obj){ //파라미터는 변수생성 & 할당과 똑같다 //var obj랑 똑같음         
+            obj.name = 'Park'; // 성공
+            obj = { name : 'park'}// 실패
+        }
+
+        변경(이름1);
+
+    </script>
+</body>
+</html>

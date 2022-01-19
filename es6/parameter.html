@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function 임시함수(){
+            return 10
+        }
+
+        function 더하기(a, b = 10 ,c = 임시함수()){ //default 파라미터 b = 10, b자리에 파라미터 안넣었을때만 발동
+            console.log(a + b + c)
+        }
+
+        더하기(1 ,2);
+        
+        //모든 파라미터를 한꺼번에 싸잡아서 다루고 싶을경우 = arguments
+        function 함수(a,b,c){
+            //arguments => 모든 파라미터를 []안에 넣은 변수
+            console.log(arguments);
+            console.log(arguments[0]);
+            console.log(arguments[2]);
+
+            for( var i = 0; i < arguments.length; i++){
+                console.log(arguments[i]);
+            }
+        }
+
+        함수(1,2,3);
+        // ... => 1.spread operator 2. rest parameter
+        // 함수 파라미터 자리에 붙으면 rest , 나머지는 spread 
+        function 함수2(a,b,...rest){ // 이 자리에 오는 모든파라미터를 []에 보관해줌
+            console.log(rest)
+            console.log(rest[0])
+            console.log(rest[1])
+
+            for(var i =0; i<rest.length; i++){
+                console.log(rest[i]);
+            }
+        }
+        
+        함수2(1,2,3,4,5,6,7);
+    </script>
+</body>
+</html>

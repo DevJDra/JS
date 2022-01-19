@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //..spread operator
+        //1. Array에 붙이면 대괄호를 제거해줍니다.
+        var 어레이 = ['hello', 'world'];
+        console.log(...어레이);
+        console.log('hello', 'world');
+
+        //2. 문자에 붙이면 펼쳐준다
+        var 문자 = 'hello';
+        console.log(문자[1]); // 문자도 array처럼 인덱싱 가능
+        console.log(...문자);
+        console.log('h','e','l','l','o');
+
+        var a = [1,2,3];
+        var b = [4,5];
+
+        var c = [...a, ...b];
+        //쓸곳1. 어레이 합치기/ 복사, Deep copy(각각 독립적인 값을 가지도록 복사)
+        console.log(c);
+
+        //그냥 등호로 복사하면 값을 공유함
+        var a = [1,2,3];
+        var b = a; 
+
+        a[3] = 4;
+        
+        //b에는 직접 값을 수정한적이 없는데 4가 추가됨
+        console.log(a);
+        console.log(b);
+
+        //쓸곳2. 오브젝트 합치기 
+        var o1 = { a : 1, b : 2};
+        var o2 = { ...o1, c : 3 }
+        var o3 = { ...a }; //Deep Copy
+
+        //카피 하다가 값 중복이 일어나면 ? - 가장 뒤에있는걸 적용
+        var o4 = { a : 2, ...o1};
+        
+        console.log(02);
+        
+        //쓸곳3. 함수 파라미터 넣을때
+        function 더하기(a,b,c){
+            console.log(a + b + c)
+        }
+        
+        var 어레이 = [10,20,30];
+        //array 내의 모든 데이터를 파라미터로 집어넣고 싶은 경우
+        더하기(어레이[0], 어레이[1], 어레이[2]);//주먹구구식
+        더하기.apply(undefined, 어레이); //옛날방식
+        더하기(...어레이);//Spread Operator 사용
+
+        var person = {
+            인사 : function(){ //너무 멋있게 잘만든 인사라는 함수
+                console.log(this.name + '안녕')
+            }
+        }
+
+        var person2 = {
+            name : '손흥민' // person2에도 인사를 적용하고싶음. but person2는 수정할 수 없음
+            // 인사 : function(){  apply는 이 기능을 실행한것
+            //     console.log(this.name + '안녕')
+        }
+        person.인사(); // undefined
+        //apply / call 비슷함
+        person.인사.apply(person2, [1,2]) // 파라미터를 array 형태로 집어넣기 가능
+        person.인사.call(person2, 1,2) 
+    </script>
+    
+</body>
+</html>

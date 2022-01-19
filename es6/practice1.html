@@ -7,6 +7,39 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="버튼">버튼이에요</button>
     
+    <script>
+        var 사람 = {
+            name: '손흥민',
+            sayHi: function(){
+                console.log('안녕 나는' + this.name)
+            }
+        }
+
+        사람.sayHi();
+
+        var 자료 = { 
+            data : [1,2,3,4,5] 
+        }
+
+        
+        자료.전부더하기 = function(){
+            let sum = 0;
+            this.data.forEach(function(a){
+                sum += a;
+            });
+            console.log(sum);
+        };
+
+        자료.전부더하기();
+        
+        document.getElementById('버튼').addEventListener('click',function(){
+             setTimeout(()=>{console.log(this.innerHTML)}, 1000);
+             var 버튼 = this;
+             setTimeout(function(){console.log(버튼.innerHTML)},1000);
+         });
+
+    </script>
 </body>
 </html>
