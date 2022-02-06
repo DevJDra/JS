@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //constructor 만드는 신문법
+        class 부모 {                //함수를 추가하고싶으면
+            construnctor(aaaa){         //1.constructor에 추가하던가
+                this.name = aaaa;      //자식이 직접 함수를 가짐
+                this.sayHi = function(){console.log('hello')}
+            }
+            sayHi() {                   //2.요기에 쓰던가(부모.prototype에 추가됨)
+                console.log('hello')
+            }
+            sayHello() {
+                console.log('hello')
+            }
+        }
+
+        var 자식 = new 부모('asdasd');
+
+        자식.__proto__ //얘의 부모 prototype(부모유전자)가 출력됨
+        Object.getPrototypeOf(자식); //=부모님 prototype을 출력해 주세요~
+
+        //객체지향 문법을 쓰는 이유
+        //object 여러개 만들어 쓰려고 함
+
+    </script>
+</body>
+</html>

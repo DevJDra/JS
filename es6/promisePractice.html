@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="test" src="https://codingapple1.github.io/kona.jpg">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        var img = document.querySelector('#test');
+
+        var pro = new Promise(function(resolve, reject){
+
+            img.addEventListener('load',function(){
+                resolve('성공');
+            });
+            img.addEventListener('error', function(){
+                reject('실패');
+            });
+        });
+
+        pro.then(function(status){
+            console.log(status);
+        }).catch(function(status){
+            console.log(status)
+        });
+
+
+        $.ajax({
+            type : 'GET',
+            url : 'https://codingapple1.github.io/hello.txt'
+        }).then(function(data){
+            console.log(data);
+        });
+    </script>
+</body>
+</html>

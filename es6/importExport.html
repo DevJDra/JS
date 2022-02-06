@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        //import 가져올거 from '경로'
+        //필요한것만 가져올 수 있다.
+        //작명가능
+        import 변수 from '/library.js'
+        console.log(변수);
+
+        //여러개를 가져오는 import문법
+        import {a,b} from '/library.js';
+        console.log(a);
+
+        //여러개 한번에 import
+        import 작명,{a,b} from '/library.js';
+        
+        //변수명이 마음에 안들면 새로짓자
+        //import {변수 as 새변수명} from '경로';
+        import {a as 별명} from '/library.js';
+        console.log(a);
+
+        //모든걸 다 import 해오는 * 기호
+        import 디폴트,* as 별명 from '경로'
+        console.log(별명);
+        console.log(디폴트);
+    </script>
+</body>
+</html>

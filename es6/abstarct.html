@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //상속기능을 구현하는 ES5 방법 : Object.create();
+        //Object.create(프로토타입object);
+
+        //부모가 가진 name, age를 그대로 물려받은 자식 object를 만들고 싶으면 ?
+        //constructor 함수를 만드시거나, Object.create를 이용하시거나
+        var 부모 = { name : 'Kim', age : 50 };
+
+        var 자식 = Object.create(부모);
+        자식.age = 20;
+
+        var 손자 = Object.create(자식);
+
+        손자.age;
+
+    </script>
+</body>
+</html>

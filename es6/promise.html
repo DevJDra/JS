@@ -1,0 +1,28 @@
+<script>
+
+    var 프로미스 = new Promise(function(resolve, reject){
+        resolve(); //성공
+        reject(); //실패
+
+        var 어려운연산 = 1+1; //1+1연산이 끝나면 성공() 판정을 내려주세요
+        resolve(10); //then 함수까지 파라미터 전해짐
+        //reject();
+
+        setTimeout(function(){
+            성공();
+        }, 1000);
+    }); //성공,실패 판정 기계
+
+    프로미스.then(function(결과){ //프로미스가 성공일 경우 실행할 코드 (resolve();)
+        console.log(결과);
+    }).catch(function(){ //실패할 경우 실행할 경우 (reject();)
+        console.log('실패했어요')
+    }).finally(function(){
+
+    })
+
+    //promise 3가지 상태
+    //1. 성공하면 <resolved>
+    //2. 판정대기중이면 <pending>
+    //3. 실패하면 <rejected>
+</script>

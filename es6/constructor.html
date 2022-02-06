@@ -11,34 +11,34 @@
         //constructor 문법의 용도
         //비슷한 object를 쉽게 찍어낼 수 있음
 
-        // var 사람 = { name : 'Kim' };
-        // var 사람2 = 사람;
+        var 사람 = { name : 'Kim' };
+        var 사람2 = 사람;
 
-        // var 학생1 = { 
-        //     name : 'Kim', 
-        //     age : 15,
-        //     sayHi = function(){
-        //         console.log('인녕하세요' + this.name + ' 입니다')
-        //     } 
-        // }
+        var 학생1 = { 
+            name : 'Kim', 
+            age : 15,
+            sayHi = function(){
+                console.log('인녕하세요' + this.name + ' 입니다')
+            } 
+        }
         
-        // 학생1.sayHi();
+        학생1.sayHi();
 
-        // function 기계(이름){ //이것은 constructor , 이걸 쓰면 object 마구 뽑기 가능
-        //     //this.age = 15 이렇게 새로생성되는 object에 값 부여가능
-        //     //this: 기계에서 새로생성되는 object(instance)
-        //     this.name = 이름;
-        //     this.age = 15;
-        //     this.sayHi = function(){
-        //         console.log('안녕하세요 ' + this.name + '입니다')
-        //     }
-        // }
+        function 기계(이름){ //이것은 constructor , 이걸 쓰면 object 마구 뽑기 가능
+            //this.age = 15 이렇게 새로생성되는 object에 값 부여가능
+            //this: 기계에서 새로생성되는 object(instance)
+            this.name = 이름;
+            this.age = 15;
+            this.sayHi = function(){
+                console.log('안녕하세요 ' + this.name + '입니다')
+            }
+        }
 
-        // var 학생1 = new 기계('Park');
-        // var 학생2 = new 기계('Kim');
+        var 학생1 = new 기계('Park');
+        var 학생2 = new 기계('Kim');
 
-        // 학생1.sayHi();
-        // 학생2.sayHi();
+        학생1.sayHi();
+        학생2.sayHi();
 
         function product(name, price){
             this.name = name;
